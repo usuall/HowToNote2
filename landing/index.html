@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HowtoNote</title>
+<meta name="description" content="클릭할 때마다 화면을 찍고 한국어 문장으로 단계를 적어 업무 매뉴얼을 만드는 Windows 프로그램. 인터넷 없이 동작하고 한/글(HWPX)로 내보냅니다.">
+<style>
+/* 글꼴은 저장소에 든 Pretendard를 쓴다. 바깥 주소에서 아무것도 불러오지 않아 업무망 PC에서도 그대로 열린다. */
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 400;
+  font-display: swap;
+  src: local("Pretendard Regular"), local("Pretendard-Regular"), url("../internal/export/fonts/Pretendard-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-display: swap;
+  src: local("Pretendard Bold"), local("Pretendard-Bold"), url("../internal/export/fonts/Pretendard-Bold.ttf") format("truetype");
+}
+
+/* 레이아웃: 매뉴얼 한 권처럼 위에서 아래로 읽는 한 줄 흐름(최대 1120px). 강조는 업무망 절의 연노랑 띠 한 곳에 모은다.
+   색은 앱(frontend/src/style.css)의 변수를 따른다: 차분한 회색 바탕, 개나리색 강조, 빨간 클릭 표시. */
+:root {
+  --bg: #f7f7f7;
+  --surface: #ffffff;
+  --ink: #1a1a1a;
+  --ink-2: #4a4a4a;
+  --ink-3: #6b6b6b;
+  --line: #e6e8eb;
+  --line-strong: #d3d6dc;
+  --accent: #ffd43b;
+  --accent-border: #fab005;
+  --accent-soft: #fff9db;
+  --accent-line: #ffe17a;
+  --on-accent: #1a1a1a;
+  --rec: #e5484d;
+  --ok: #2b7a3b;
+  --ok-soft: #e6f4ea;
+  --wait: #855d00;
+  --wait-soft: #fff0bf;
+  --plan: #555b66;
+  --plan-soft: #eceef1;
+  --fmt-pdf: #d6363e;
+  --fmt-hwpx: #1b7fbd;
+  --fmt-docx: #2b5797;
+  --fmt-html: #2b8a3e;
+  --on-fmt: #ffffff;
+  --hl-size: 40%;
+  --shadow: 0 1px 2px rgba(20, 20, 20, 0.06), 0 16px 40px rgba(20, 20, 20, 0.10);
+  --font-body: "Pretendard", "Malgun Gothic", "맑은 고딕", "Apple SD Gothic Neo", sans-serif;
+  --font-mono: "D2Coding", "Consolas", ui-monospace, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #131416;
+    --surface: #1b1c1f;
+    --ink: #f1f1f2;
+    --ink-2: #c6c8cc;
+    --ink-3: #9da1a8;
+    --line: #2a2c31;
+    --line-strong: #3a3d43;
+    --accent: #ffd43b;
+    --accent-border: #fab005;
+    --accent-soft: #221e0d;
+    --accent-line: #4a3f15;
+    --on-accent: #1a1a1a;
+    --rec: #ff6369;
+    --ok: #74d088;
+    --ok-soft: #16301e;
+    --wait: #f2c84b;
+    --wait-soft: #352b0c;
+    --plan: #b5bac4;
+    --plan-soft: #272a30;
+    --hl-size: 14%;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 16px 40px rgba(0, 0, 0, 0.45);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #131416;
+  --surface: #1b1c1f;
+  --ink: #f1f1f2;
+  --ink-2: #c6c8cc;
+  --ink-3: #9da1a8;
+  --line: #2a2c31;
+  --line-strong: #3a3d43;
+  --accent: #ffd43b;
+  --accent-border: #fab005;
+  --accent-soft: #221e0d;
+  --accent-line: #4a3f15;
+  --on-accent: #1a1a1a;
+  --rec: #ff6369;
+  --ok: #74d088;
+  --ok-soft: #16301e;
+  --wait: #f2c84b;
+  --wait-soft: #352b0c;
+  --plan: #b5bac4;
+  --plan-soft: #272a30;
+  --hl-size: 14%;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 16px 40px rgba(0, 0, 0, 0.45);
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+code { font-family: var(--font-mono); font-size: 0.9em; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+
+/* 머리 막대 */
+.top { background: var(--surface); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 700; text-decoration: none; }
+.logo {
+  display: grid; place-items: center; flex: none;
+  width: 30px; height: 30px; border-radius: 7px;
+  background: var(--accent); color: var(--on-accent);
+  font-size: 16px; font-weight: 700; line-height: 1;
+}
+.nav { display: flex; flex-wrap: wrap; gap: 4px 22px; font-size: 15px; }
+.nav a { color: var(--ink-2); text-decoration: none; }
+.nav a:hover { color: var(--ink); }
+
+/* 첫 화면 */
+.hero { background: var(--surface); border-bottom: 1px solid var(--line); }
+.hero .wrap {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: 56px; align-items: center; padding-block: 72px 84px;
+}
+.eyebrow { margin: 0 0 14px; font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: var(--ink-3); }
+h1 {
+  margin: 0 0 22px;
+  font-size: clamp(36px, 5.2vw, 58px); line-height: 1.16; letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+.hl {
+  padding: 0 0.06em;
+  background: linear-gradient(to top, var(--accent) var(--hl-size), transparent var(--hl-size));
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+.lead { margin: 0 0 28px; max-width: 34em; font-size: 18px; color: var(--ink-2); }
+
+.flow {
+  display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px;
+  margin: 0 0 30px; padding: 5px; list-style: none;
+  border: 1px solid var(--line); border-radius: 999px; background: var(--bg);
+}
+.flow li { display: inline-flex; align-items: center; gap: 8px; padding: 3px 12px 3px 4px; border-radius: 999px; font-size: 15px; font-weight: 700; color: var(--ink-2); }
+.flow li + li::before { content: ""; width: 14px; height: 1px; margin-right: 2px; background: var(--line-strong); }
+.flow .n {
+  display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%;
+  border: 1.5px solid var(--ink-3); font-size: 13px; line-height: 1;
+}
+.flow li:first-child { background: var(--accent-soft); color: var(--ink); box-shadow: inset 0 0 0 1px var(--accent-line); }
+.flow li:first-child .n { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-flex; align-items: center; height: 46px; padding: 0 20px;
+  border: 1px solid var(--line-strong); border-radius: 8px;
+  background: var(--surface); color: var(--ink);
+  font-size: 16px; font-weight: 700; text-decoration: none;
+}
+.btn:hover { background: var(--bg); }
+.btn.primary { background: var(--accent); border-color: var(--accent-border); color: var(--on-accent); }
+.btn.primary:hover { background: var(--accent-border); }
+
+.facts { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 28px 0 0; padding: 0; list-style: none; font-size: 15px; color: var(--ink-2); }
+.facts li { display: inline-flex; align-items: center; gap: 8px; }
+.facts li::before { content: ""; flex: none; width: 8px; height: 8px; border-radius: 2px; background: var(--accent-border); }
+
+.shot { margin: 0; min-width: 0; }
+.shot-frame {
+  position: relative; overflow: hidden;
+  max-width: 100%; aspect-ratio: 1264 / 1000;
+  border: 1px solid var(--line-strong); border-radius: 12px;
+  background: var(--surface); box-shadow: var(--shadow);
+}
+.shot-frame img { width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+.shot figcaption { margin-top: 12px; font-size: 14px; color: var(--ink-3); }
+/* 편집기 화면 속 '연차 신청' 클릭 표시 자리(원본 1264×1592의 382, 422) */
+.ring {
+  position: absolute; left: 30.2%; top: 42.2%;
+  width: 7%; aspect-ratio: 1;
+  border: 3px solid var(--rec); border-radius: 50%;
+  transform: translate(-50%, -50%) scale(1.3);
+  opacity: 0.85; pointer-events: none;
+  animation: ping 2.4s ease-out infinite;
+}
+@keyframes ping {
+  0% { transform: translate(-50%, -50%) scale(0.7); opacity: 0.95; }
+  75%, 100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+}
+
+/* 공통 절 */
+.sec .wrap { padding-block: 88px; }
+.sec.ruled .wrap { border-top: 1px solid var(--line); }
+.sec-head { max-width: 46em; margin-bottom: 44px; }
+.sec-head p { margin: 0; font-size: 18px; color: var(--ink-2); }
+h2 {
+  margin: 0 0 16px;
+  font-size: clamp(28px, 3.6vw, 40px); line-height: 1.28; letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+h3 { margin: 0 0 8px; font-size: 20px; line-height: 1.4; letter-spacing: -0.02em; text-wrap: balance; }
+
+/* 왜 HowtoNote인가 */
+.compare { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.way { padding: 28px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.way.old { background: transparent; border: 1.5px dashed var(--line-strong); }
+.way.new { border-color: var(--accent-border); box-shadow: 0 0 0 4px var(--accent-soft); }
+.way-label { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; margin-bottom: 18px; font-size: 18px; font-weight: 700; }
+.way-label span { font-size: 14px; font-weight: 400; color: var(--ink-3); }
+.steps { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; counter-reset: s; }
+.steps li { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 12px; align-items: start; counter-increment: s; }
+.steps li::before {
+  content: counter(s);
+  display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--plan-soft); color: var(--ink-2);
+  font-size: 14px; font-weight: 700; line-height: 1;
+}
+.way.new .steps li::before { background: var(--accent); color: var(--on-accent); }
+
+.reasons { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px; margin-top: 56px; }
+.reasons p { margin: 0; color: var(--ink-2); }
+
+/* 앱의 '도움말' 안내 상자 모양 */
+.callout {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 14px; align-items: baseline;
+  margin-top: 48px; padding: 16px 20px;
+  border-left: 4px solid var(--ok); border-radius: 0 8px 8px 0; background: var(--ok-soft);
+}
+.callout b { color: var(--ok); white-space: nowrap; }
+.callout p { margin: 0; }
+
+/* 좋은 점 */
+.points { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 40px; }
+.point { padding-block: 24px 28px; border-top: 1px solid var(--line-strong); }
+.point p { margin: 0; color: var(--ink-2); }
+
+.specimen { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 2fr); gap: 40px; margin-top: 64px; align-items: start; }
+.specimen-text p { margin: 0 0 12px; color: var(--ink-2); }
+.specimen-text small { font-size: 14px; color: var(--ink-3); }
+.table-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 13px 18px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+tbody tr:last-child td { border-bottom: 0; }
+thead th { font-size: 13px; font-weight: 700; letter-spacing: 0.02em; color: var(--ink-3); background: var(--bg); }
+.titles { min-width: 560px; font-size: 15px; }
+.titles td:first-child { width: 40%; color: var(--ink-2); }
+.titles td:last-child { font-weight: 700; }
+.josa { padding: 0 2px; border-radius: 2px; background: var(--accent-soft); box-shadow: inset 0 -2px 0 var(--accent-border); }
+
+/* 업무망 */
+.band { background: var(--accent-soft); border-block: 1px solid var(--accent-line); }
+.pillars { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 56px; margin-bottom: 64px; }
+.pillar h3 { display: flex; align-items: center; gap: 12px; font-size: 22px; }
+.pillar h3::before { content: ""; flex: none; width: 12px; height: 12px; border-radius: 3px; background: var(--accent-border); }
+.pillar p { margin: 0; color: var(--ink-2); }
+
+.review { overflow: hidden; border: 1px solid var(--accent-line); border-radius: 12px; background: var(--surface); }
+.review-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 10px 24px; padding: 22px 24px; border-bottom: 1px solid var(--line); }
+.review-head h3 { margin: 0; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 0; padding: 0; list-style: none; font-size: 14px; color: var(--ink-3); }
+.legend li { display: inline-flex; align-items: center; gap: 8px; }
+.checks { font-size: 15px; }
+.checks th, .checks td { padding: 16px 24px; }
+.checks td:first-child { width: 26%; font-weight: 700; }
+.checks td:nth-child(2) { color: var(--ink-2); }
+.checks td:last-child { width: 1%; white-space: nowrap; }
+.chip {
+  display: inline-flex; align-items: center; gap: 6px; padding: 2px 10px;
+  border-radius: 999px; font-size: 13px; font-weight: 700; white-space: nowrap;
+}
+.chip::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.chip.ok { color: var(--ok); background: var(--ok-soft); }
+.chip.wait { color: var(--wait); background: var(--wait-soft); }
+.chip.plan { color: var(--plan); background: var(--plan-soft); }
+
+/* 지금 되는 것 */
+.feat-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 48px; align-items: center; margin-bottom: 56px; }
+.feat-intro p { margin: 0; color: var(--ink-2); }
+.feat-intro .shot-frame { aspect-ratio: 1264 / 952; }
+
+.stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.stage { padding: 26px 26px 28px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.stage h3 { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.stage .n {
+  display: grid; place-items: center; flex: none; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--accent); color: var(--on-accent); font-size: 15px; line-height: 1;
+}
+.stage ul { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; font-size: 15px; color: var(--ink-2); }
+.stage li { position: relative; padding-left: 16px; }
+.stage li::before { content: ""; position: absolute; left: 0; top: 0.8em; width: 7px; height: 2px; background: var(--ink-3); }
+.stage strong { color: var(--ink); }
+kbd {
+  padding: 1px 6px; border: 1px solid var(--line-strong); border-bottom-width: 2px; border-radius: 5px;
+  background: var(--bg); color: var(--ink); font-family: var(--font-mono); font-size: 13px; white-space: nowrap;
+}
+
+.formats-title { margin-top: 56px; }
+.formats { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin: 16px 0 0; padding: 0; list-style: none; }
+.fmt { display: grid; align-content: start; gap: 6px; padding: 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.badge {
+  justify-self: start; margin-bottom: 4px; padding: 3px 8px; border-radius: 5px;
+  color: var(--on-fmt); font-family: var(--font-mono); font-size: 13px; font-weight: 700; letter-spacing: 0.03em;
+}
+.badge.pdf { background: var(--fmt-pdf); }
+.badge.hwpx { background: var(--fmt-hwpx); }
+.badge.docx { background: var(--fmt-docx); }
+.badge.html { background: var(--fmt-html); }
+.badge.htn { background: var(--accent); color: var(--on-accent); }
+.fmt b { font-size: 17px; }
+.fmt span { font-size: 14px; color: var(--ink-3); }
+
+/* 바닥 */
+.foot { border-top: 1px solid var(--line); background: var(--surface); }
+.foot .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding-block: 28px 36px; font-size: 14px; color: var(--ink-3); }
+.foot .brand { font-size: 15px; color: var(--ink); }
+.foot .logo { width: 24px; height: 24px; border-radius: 6px; font-size: 13px; }
+.foot p { margin: 0; }
+
+@media (max-width: 960px) {
+  .hero .wrap { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-block: 48px 56px; }
+  .feat-intro, .specimen { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .stages { grid-template-columns: minmax(0, 1fr); }
+  .points { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .formats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .fmt.htn { grid-column: span 2; }
+  .reasons { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+}
+@media (max-width: 720px) {
+  .nav { display: none; }
+  .sec .wrap { padding-block: 60px; }
+  .compare, .pillars { grid-template-columns: minmax(0, 1fr); }
+  .pillars { gap: 28px; margin-bottom: 44px; }
+  .way { padding: 22px 20px; }
+  .checks, .checks tbody, .checks tr, .checks td { display: block; width: auto; }
+  .checks thead { display: none; }
+  .checks tr { padding: 18px 20px; border-bottom: 1px solid var(--line); }
+  .checks tbody tr:last-child { border-bottom: 0; }
+  .checks td { padding: 0; border: 0; }
+  .checks td:first-child, .checks td:last-child { width: auto; }
+  .checks td + td { margin-top: 6px; }
+  .review-head { padding: 20px; }
+}
+@media (max-width: 560px) {
+  .points { grid-template-columns: minmax(0, 1fr); }
+  .formats { grid-template-columns: minmax(0, 1fr); }
+  .fmt.htn { grid-column: auto; }
+  .lead, .sec-head p { font-size: 17px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .ring { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" id="top"><span class="logo" aria-hidden="true">H</span>HowtoNote</a>
+    <nav class="nav" aria-label="이 페이지">
+      <a href="#why">왜 HowtoNote인가</a>
+      <a href="#good">좋은 점</a>
+      <a href="#network">업무망</a>
+      <a href="#features">지금 되는 것</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">업무 매뉴얼 자동 작성 · Windows 10/11</p>
+      <h1>평소처럼 클릭하면<br><span class="hl">매뉴얼</span>이 써집니다</h1>
+      <p class="lead">'녹화 시작'을 누르고 하던 일을 하세요. HowtoNote가 클릭할 때마다 화면을 찍고 “'연차 신청'을 클릭합니다.”처럼 한국어 문장으로 단계를 적습니다. 다듬은 뒤 한/글, PDF, 워드, 웹 문서로 저장합니다.</p>
+      <ol class="flow" aria-label="만드는 순서">
+        <li><span class="n">1</span>녹화하기</li>
+        <li><span class="n">2</span>다듬기</li>
+        <li><span class="n">3</span>내보내기</li>
+      </ol>
+      <div class="actions">
+        <a class="btn primary" href="#network">업무망에서 좋은 점</a>
+        <a class="btn" href="#features">지금 되는 것</a>
+      </div>
+      <ul class="facts">
+        <li>인터넷 없이 동작</li>
+        <li>계정·서버 없음</li>
+        <li>한/글(HWPX) 내보내기</li>
+        <li>한국어 화면</li>
+      </ul>
+    </div>
+    <figure class="shot">
+      <div class="shot-frame">
+        <img src="img/editor.png" width="1264" height="1592" alt="HowtoNote 다듬기 화면. 왼쪽에 스텝 4개가 있고, 오른쪽에 스텝 1의 제목 '왼쪽 메뉴에서 연차 신청을 누릅니다'와 연차 신청 메뉴에 찍힌 클릭 표시가 보인다.">
+        <span class="ring" aria-hidden="true"></span>
+      </div>
+      <figcaption>다듬기 화면. 녹화가 끝나면 스텝마다 화면, 클릭 표시, 제목이 들어 있습니다. 화면 속 회사와 사람은 예시입니다.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="sec" id="why">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">왜 HowtoNote인가</p>
+      <h2>매뉴얼 만드는 시간 대부분은 캡처와 붙여넣기입니다</h2>
+      <p>업무 매뉴얼은 같은 일을 화면 수만큼 되풀이해 만듭니다. HowtoNote는 그 되풀이를 일하는 동안 대신 합니다. 사람은 내용을 다듬는 데만 시간을 씁니다.</p>
+    </div>
+
+    <div class="compare">
+      <div class="way old">
+        <div class="way-label">손으로 만들 때 <span>화면마다 되풀이</span></div>
+        <ol class="steps">
+          <li>화면을 캡처합니다.</li>
+          <li>문서에 붙여 넣고 필요한 부분만 자릅니다.</li>
+          <li>누른 자리에 빨간 네모를 그립니다.</li>
+          <li>번호를 매기고 무엇을 눌렀는지 적습니다.</li>
+          <li>이름이나 사번이 보이면 가립니다.</li>
+          <li>한/글 서식과 쪽 나눔을 맞춥니다.</li>
+        </ol>
+      </div>
+      <div class="way new">
+        <div class="way-label">HowtoNote로 만들 때 <span>한 번만</span></div>
+        <ol class="steps">
+          <li>첫 화면에서 '녹화 시작'을 누릅니다.</li>
+          <li>평소처럼 일합니다. 클릭할 때마다 화면, 클릭 표시, 제목이 쌓입니다.</li>
+          <li>제목과 그림을 다듬고, 가릴 곳은 모자이크합니다.</li>
+          <li>형식을 골라 '저장'을 누릅니다. 번호, 목차, 쪽 번호는 알아서 붙습니다.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="reasons">
+      <div>
+        <h3>처음 쓰는 사람도 끝까지 갑니다</h3>
+        <p>기본값만으로 매뉴얼 한 편이 나옵니다. 녹화 범위는 전체 화면이 기본이고, 세부 설정은 '고급 설정'에 접혀 있습니다.</p>
+      </div>
+      <div>
+        <h3>누가 만들어도 같은 모양입니다</h3>
+        <p>스텝 번호, 제목 문체, 안내 상자, 표지와 목차가 같은 규칙으로 나옵니다. 사람마다 모양이 다른 매뉴얼을 맞출 일이 줄어듭니다.</p>
+      </div>
+      <div>
+        <h3>화면이 바뀌면 그 부분만 다시 찍습니다</h3>
+        <p>'이어서 녹화'로 바뀐 화면만 더 찍어 넣고 옛 스텝은 지웁니다. 매뉴얼을 처음부터 다시 만들지 않아도 됩니다.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <b>도움말</b>
+      <p>이 프로그램의 사용 설명서 'HowtoNote 사용법'(6장 48스텝, PDF 43쪽)도 HowtoNote로 만들었습니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec ruled" id="good">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">좋은 점</p>
+      <h2>써 보면 편한 점</h2>
+      <p>매일 매뉴얼을 만드는 사람이 아니어도 도움말 없이 한 편을 끝낼 수 있게 만들었습니다.</p>
+    </div>
+
+    <div class="points">
+      <div class="point">
+        <h3>제목이 자연스러운 한국어입니다</h3>
+        <p>받침에 따라 '을'과 '를'을 고르고, 단추 이름에 붙은 단축키 표시를 지웁니다. 비밀번호 입력란은 글자 대신 ●●●●로 적습니다.</p>
+      </div>
+      <div class="point">
+        <h3>지금 할 일이 화면에 보입니다</h3>
+        <p>화면 위 3단계 막대가 녹화하기, 다듬기, 내보내기 중 어디인지 알려 줍니다. 모든 단추에 무엇을 하는지 알려 주는 툴팁이 있습니다.</p>
+      </div>
+      <div class="point">
+        <h3>어려운 말을 쓰지 않습니다</h3>
+        <p>'주석' 대신 '그리기', '콜아웃' 대신 '안내 상자', '프리셋' 대신 '문서 모양'이라고 씁니다. 오류가 나면 무엇을 하면 되는지 한 문장으로 알려 줍니다.</p>
+      </div>
+      <div class="point">
+        <h3>원본 그림은 그대로 남습니다</h3>
+        <p>자르기와 모자이크는 원본 위에 얹는 표시입니다. 나중에 자른 범위를 넓히거나 모자이크를 옮길 수 있습니다.</p>
+      </div>
+      <div class="point">
+        <h3>실수해도 되돌릴 수 있습니다</h3>
+        <p>1초마다 자동으로 저장하고, 실행 취소와 지운 스텝 되살리기가 있습니다. 저장이 안 되면 창을 닫기 전에 다시 묻습니다.</p>
+      </div>
+      <div class="point">
+        <h3>기다리지 않습니다</h3>
+        <p>클릭부터 스텝 저장까지 0.3초입니다(통합 테스트 기준). 녹화 툴바는 스크린샷에 찍히지 않아 따로 지울 필요가 없습니다.</p>
+      </div>
+    </div>
+
+    <div class="specimen">
+      <div class="specimen-text">
+        <h3>제목은 이렇게 적힙니다</h3>
+        <p>단추, 메뉴, 탭, 입력란, 체크 상자, 링크를 알아보고 종류에 맞는 문장을 고릅니다. 이름이 없으면 주변 글자를 읽어 씁니다.</p>
+        <small>표의 문장은 제목 규칙 테스트에 있는 실제 예입니다. 노랗게 표시한 글자가 받침을 보고 고른 조사입니다.</small>
+      </div>
+      <div class="table-scroll">
+        <table class="titles">
+          <thead>
+            <tr><th scope="col">누른 것</th><th scope="col">HowtoNote가 적는 제목</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>단추 <code>저장(&amp;S)</code></td><td>'저장' 버튼을 클릭합니다.</td></tr>
+            <tr><td>메뉴 <code>다른 이름으로 저장(A)...</code></td><td>'다른 이름으로 저장' 메뉴를 선택합니다.</td></tr>
+            <tr><td>'이름' 입력란에 홍길동 입력</td><td>'이름' 입력란에 '홍길동'<span class="josa">을</span> 입력합니다.</td></tr>
+            <tr><td>'이름' 입력란에 김철수 입력</td><td>'이름' 입력란에 '김철수'<span class="josa">를</span> 입력합니다.</td></tr>
+            <tr><td>비밀번호 입력란에 입력</td><td>'비밀번호' 입력란에 '●●●●'<span class="josa">를</span> 입력합니다.</td></tr>
+            <tr><td>체크 상자 '자동 저장' 켜기</td><td>'자동 저장'<span class="josa">을</span> 선택합니다.</td></tr>
+            <tr><td>체크 상자 '미리 보기' 끄기</td><td>'미리 보기'<span class="josa">를</span> 해제합니다.</td></tr>
+            <tr><td>이름 없는 단추(글자 '확인')</td><td>'확인'<span class="josa">을</span> 클릭합니다.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec band" id="network">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">업무망</p>
+      <h2>업무망에서 특히 좋은 점</h2>
+      <p>인터넷이 막힌 PC, 보안 프로그램이 여럿 도는 PC, 한/글을 표준으로 쓰는 기관을 기준으로 설계했습니다. 처음부터 오프라인 전용입니다.</p>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar">
+        <h3>망 밖으로 나가는 통신이 없습니다</h3>
+        <p>계정, 로그인, 클라우드, 사용 통계 전송이 없습니다. PDF도 프로그램 안에서 만들고, 그동안 원격 요청을 막습니다. PC 한 대 안에서 모든 일이 끝납니다.</p>
+      </div>
+      <div class="pillar">
+        <h3>한/글 문서로 바로 냅니다</h3>
+        <p>HWPX로 표지, 목차, 머리말·꼬리말 쪽 번호까지 만듭니다. 워드로 만든 뒤 한/글로 옮겨 서식을 다시 맞출 일이 없습니다.</p>
+      </div>
+      <div class="pillar">
+        <h3>가릴 것은 알아서 가립니다</h3>
+        <p>비밀번호는 읽지 않고 ●●●●로 적습니다. 나눠 줄 파일은 모자이크를 그림에 굳히고 원본을 빼서, 받은 사람이 가린 곳을 되살릴 수 없습니다. 내보낸 문서에는 PC 경로나 사용자 이름이 들어가지 않습니다.</p>
+      </div>
+      <div class="pillar">
+        <h3>서버 없이 주고받습니다</h3>
+        <p>매뉴얼을 .htn 파일 하나로 저장합니다. 메일, 이동식 저장 매체, 망 간 자료 전송으로 옮기면 받은 사람이 첫 화면 '가져오기'로 열어 고쳐 씁니다.</p>
+      </div>
+    </div>
+
+    <div class="review">
+      <div class="review-head">
+        <h3>도입 검토 때 자주 받는 질문</h3>
+        <ul class="legend">
+          <li><span class="chip ok">구현됨</span>자동 테스트로 확인</li>
+          <li><span class="chip wait">현장 확인</span>기관 PC에서 확인할 것</li>
+          <li><span class="chip plan">준비 중</span>다음 단계</li>
+        </ul>
+      </div>
+      <table class="checks">
+        <thead>
+          <tr><th scope="col">질문</th><th scope="col">답</th><th scope="col">상태</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>인터넷 연결이 필요한가요?</td>
+            <td>필요 없습니다. 녹화, 편집, 내보내기가 모두 PC 안에서 끝납니다.</td>
+            <td><span class="chip ok">구현됨</span></td>
+          </tr>
+          <tr>
+            <td>바깥으로 데이터를 보내나요?</td>
+            <td>보내지 않습니다. 계정과 사용 통계 전송이 없고, PDF를 만들 때는 원격 요청을 막습니다.</td>
+            <td><span class="chip ok">구현됨</span></td>
+          </tr>
+          <tr>
+            <td>비밀번호가 기록되나요?</td>
+            <td>비밀번호 입력란의 값은 읽지 않습니다. 제목에는 ●●●●로 적습니다.</td>
+            <td><span class="chip ok">구현됨</span></td>
+          </tr>
+          <tr>
+            <td>화면 속 개인정보는요?</td>
+            <td>모자이크로 가립니다. 나눠 줄 .htn은 모자이크와 자르기를 그림에 굳히고 원본을 넣지 않습니다. 숨긴 스텝도 빠집니다.</td>
+            <td><span class="chip ok">구현됨</span></td>
+          </tr>
+          <tr>
+            <td>내보낸 문서에 PC 정보가 남나요?</td>
+            <td>PC 경로와 사용자 이름이 들어가지 않게 막고 검사 도구로 확인합니다. .htn에는 녹화한 PC 정보 중 화면 배율만 남습니다.</td>
+            <td><span class="chip ok">구현됨</span></td>
+          </tr>
+          <tr>
+            <td>인터넷 없는 PC에서 문서가 열리나요?</td>
+            <td>웹 문서(HTML)는 글꼴과 그림까지 파일 하나에 담습니다. PDF는 글꼴을 넣어 저장합니다.</td>
+            <td><span class="chip ok">구현됨</span></td>
+          </tr>
+          <tr>
+            <td>한/글에서 열리나요?</td>
+            <td>HWPX 스키마 검사를 통과합니다. 한/글 2020·2022·2024와 한컴오피스 뷰어에서 직접 여는 확인이 남아 있습니다.</td>
+            <td><span class="chip wait">현장 확인</span></td>
+          </tr>
+          <tr>
+            <td>백신이나 EDR이 막지 않나요?</td>
+            <td>디버그 포트를 연 브라우저나 다른 프로그램을 띄우지 않습니다. Microsoft Defender 검사와 녹화 실행에서 탐지가 없었습니다. V3와 알약은 기관 PC에서 확인합니다.</td>
+            <td><span class="chip wait">현장 확인</span></td>
+          </tr>
+          <tr>
+            <td>어떻게 설치하나요?</td>
+            <td>설치판과 포터블판을 만들 예정입니다. 인터넷 없이 설치되도록 WebView2 런타임을 함께 넣습니다.</td>
+            <td><span class="chip plan">준비 중</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="features">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">지금 되는 것</p>
+      <h2>지금 구현된 기능</h2>
+      <p>개발 버전 0.0.1 기준입니다. 녹화하기, 다듬기, 내보내기 세 단계마다 이만큼 됩니다.</p>
+    </div>
+
+    <div class="feat-intro">
+      <div>
+        <h3>첫 화면에서 바로 시작합니다</h3>
+        <p>녹화 범위를 전체 화면, 창 하나, 영역 지정 중에서 고르고 '녹화 시작'을 누릅니다. 만든 매뉴얼은 첫 장면이 보이는 카드로 모이고, 폴더로 나눠 둘 수 있습니다.</p>
+      </div>
+      <figure class="shot">
+        <div class="shot-frame">
+          <img src="img/home.png" width="1264" height="952" alt="HowtoNote 첫 화면. 위에 3단계 막대, 가운데에 새 매뉴얼 만들기 카드와 녹화 범위(전체 화면, 창 하나, 영역 지정), 아래에 매뉴얼 카드 두 개가 있다.">
+        </div>
+        <figcaption>첫 화면. 왼쪽은 폴더, 위는 3단계 막대입니다.</figcaption>
+      </figure>
+    </div>
+
+    <div class="stages">
+      <div class="stage">
+        <h3><span class="n">1</span>녹화하기</h3>
+        <ul>
+          <li>클릭한 순간의 화면을 찍고 누른 자리를 표시합니다.</li>
+          <li>단추, 메뉴, 탭, 입력란을 알아보고 제목을 적습니다(UI Automation).</li>
+          <li>이름 없는 단추는 주변 글자를 읽어 제목을 만듭니다(tesseract OCR이 있을 때).</li>
+          <li>입력한 값까지 한 스텝으로 적고, 비밀번호는 가립니다.</li>
+          <li>같은 자리 더블클릭은 한 스텝으로 합칩니다.</li>
+          <li>단축키는 <kbd>Ctrl+Shift</kbd>와 함께 <kbd>F9</kbd> 일시정지, <kbd>F10</kbd> 지금 화면 찍기, <kbd>F11</kbd> 끝내기</li>
+          <li>녹화 툴바는 스크린샷에 찍히지 않고, 끝나면 창 배치를 되돌립니다.</li>
+        </ul>
+      </div>
+      <div class="stage">
+        <h3><span class="n">2</span>다듬기</h3>
+        <ul>
+          <li>스텝 순서 바꾸기, 하위 스텝(1.1), 숨기기, 지우기와 되살리기</li>
+          <li><strong>그리기 9종</strong>: 클릭 표시, 화살표, 사각형, 글자, 모자이크, 타원, 말풍선, 번호, 형광펜</li>
+          <li>자르기. 원본 그림은 그대로 둡니다.</li>
+          <li>설명 서식: 굵게, 기울임, 밑줄, 소제목, 목록, 링크, 표</li>
+          <li><strong>안내 상자 4종</strong>: 알림, 도움말, 주의, 위험</li>
+          <li>글 스텝, 그림 스텝 넣기와 화면 캡처 붙여 넣기</li>
+          <li>1초 자동 저장, 실행 취소, 이어서 녹화</li>
+        </ul>
+      </div>
+      <div class="stage">
+        <h3><span class="n">3</span>내보내기</h3>
+        <ul>
+          <li>한/글(HWPX), PDF, 워드(DOCX), 웹 문서(HTML)</li>
+          <li>표지, 목차, 쪽 번호, 머리글·바닥글</li>
+          <li>문서 모양: 용지, 방향, 스텝마다 새 쪽, 그림 크기, 글꼴(기본, 맑은 고딕, 함초롬돋움)</li>
+          <li><strong>HowtoNote 파일(.htn)</strong>: 고쳐 쓸 사람에게, 나눠 줄 사람에게</li>
+          <li>받은 .htn은 첫 화면 '가져오기'로 바로 엽니다.</li>
+          <li>저장한 뒤 '폴더 열기'로 파일 자리를 보여 줍니다.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="formats-title">한 번 만들어 다섯 가지로 저장합니다</h3>
+    <ul class="formats">
+      <li class="fmt"><span class="badge hwpx">HWPX</span><b>한글</b><span>한/글에서 고쳐 쓸 때</span></li>
+      <li class="fmt"><span class="badge pdf">PDF</span><b>PDF</b><span>인쇄하거나 그대로 나눠 줄 때</span></li>
+      <li class="fmt"><span class="badge docx">DOCX</span><b>워드</b><span>Word에서 고쳐 쓸 때</span></li>
+      <li class="fmt"><span class="badge html">HTML</span><b>웹 문서</b><span>브라우저로 열어 볼 때. 파일 하나로 끝납니다.</span></li>
+      <li class="fmt htn"><span class="badge htn">HTN</span><b>HowtoNote</b><span>고쳐 쓸 사람에게는 편집용, 나눠 줄 사람에게는 배포용</span></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="logo" aria-hidden="true">H</span>HowtoNote 0.0.1</a>
+    <p>Windows 10/11 x64 · 소스 <a href="https://github.com/usuall/HowToNote2">github.com/usuall/HowToNote2</a></p>
+    <p>이 페이지는 바깥에서 아무것도 불러오지 않습니다.</p>
+  </div>
+</footer>
+
+</body>
+</html>
