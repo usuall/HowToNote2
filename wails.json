@@ -1,0 +1,11 @@
+{
+  "$schema": "https://wails.io/schemas/config.v2.json",
+  "name": "HowtoNote",
+  "outputfilename": "HowtoNote",
+  "frontend:install": "npm install",
+  "frontend:build": "npm run build",
+  "frontend:dev:watcher": "npm run dev",
+  "frontend:dev:serverUrl": "auto",
+  "author": { "name": "tesla", "email": "usuall@gmail.com" },
+  "info": { "productName": "HowtoNote", "productVersion": "0.0.1", "copyright": "tesla", "comments": "단계별 업무 매뉴얼 자동 생성" }
+}

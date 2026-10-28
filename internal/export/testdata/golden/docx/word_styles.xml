@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+<w:docDefaults>
+<w:rPrDefault>
+<w:rPr>
+<w:rFonts w:ascii="맑은 고딕" w:hAnsi="맑은 고딕" w:eastAsia="맑은 고딕" w:cs="맑은 고딕"/>
+<w:sz w:val="21"/>
+<w:szCs w:val="21"/>
+<w:lang w:val="ko-KR" w:eastAsia="ko-KR"/>
+</w:rPr>
+</w:rPrDefault>
+<w:pPrDefault>
+<w:pPr>
+<w:spacing w:after="120" w:line="300" w:lineRule="auto"/>
+</w:pPr>
+</w:pPrDefault>
+</w:docDefaults>
+<w:style w:type="paragraph" w:default="1" w:styleId="Normal">
+<w:name w:val="Normal"/>
+<w:qFormat/>
+</w:style>
+<w:style w:type="paragraph" w:styleId="Heading1">
+<w:name w:val="heading 1"/>
+<w:basedOn w:val="Normal"/>
+<w:next w:val="Normal"/>
+<w:qFormat/>
+<w:pPr>
+<w:jc w:val="center"/>
+<w:spacing w:after="240"/>
+<w:outlineLvl w:val="0"/>
+</w:pPr>
+<w:rPr>
+<w:b/>
+<w:sz w:val="44"/>
+<w:szCs w:val="44"/>
+</w:rPr>
+</w:style>
+<w:style w:type="paragraph" w:styleId="Subtitle">
+<w:name w:val="Subtitle"/>
+<w:basedOn w:val="Normal"/>
+<w:qFormat/>
+<w:pPr>
+<w:jc w:val="center"/>
+</w:pPr>
+<w:rPr>
+<w:color w:val="5F6368"/>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:style>
+<w:style w:type="paragraph" w:customStyle="1" w:styleId="TOCHeading">
+<w:name w:val="목차 제목"/>
+<w:basedOn w:val="Normal"/>
+<w:pPr>
+<w:spacing w:before="240" w:after="240"/>
+</w:pPr>
+<w:rPr>
+<w:b/>
+<w:sz w:val="32"/>
+</w:rPr>
+</w:style>
+<w:style w:type="paragraph" w:customStyle="1" w:styleId="StepTitle">
+<w:name w:val="스텝 제목"/>
+<w:basedOn w:val="Normal"/>
+<w:next w:val="Body"/>
+<w:qFormat/>
+<w:pPr>
+<w:keepNext/>
+<w:spacing w:before="360" w:after="120"/>
+<w:outlineLvl w:val="1"/>
+</w:pPr>
+<w:rPr>
+<w:b/>
+<w:sz w:val="28"/>
+<w:szCs w:val="28"/>
+</w:rPr>
+</w:style>
+<w:style w:type="paragraph" w:customStyle="1" w:styleId="SubStepTitle">
+<w:name w:val="하위 스텝 제목"/>
+<w:basedOn w:val="Normal"/>
+<w:next w:val="Body"/>
+<w:qFormat/>
+<w:pPr>
+<w:keepNext/>
+<w:spacing w:before="240" w:after="120"/>
+<w:ind w:left="400"/>
+<w:outlineLvl w:val="2"/>
+</w:pPr>
+<w:rPr>
+<w:b/>
+<w:sz w:val="24"/>
+<w:szCs w:val="24"/>
+</w:rPr>
+</w:style>
+<w:style w:type="paragraph" w:customStyle="1" w:styleId="Body">
+<w:name w:val="본문"/>
+<w:basedOn w:val="Normal"/>
+<w:qFormat/>
+</w:style>
+<w:style w:type="paragraph" w:customStyle="1" w:styleId="DescHeading3">
+<w:name w:val="설명 제목 3"/>
+<w:basedOn w:val="Body"/>
+<w:next w:val="Body"/>
+<w:pPr>
+<w:keepNext/>
+<w:spacing w:before="200"/>
+</w:pPr>
+<w:rPr>
+<w:b/>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:style>
+<w:style w:type="paragraph" w:customStyle="1" w:styleId="DescHeading4">
+<w:name w:val="설명 제목 4"/>
+<w:basedOn w:val="Body"/>
+<w:next w:val="Body"/>
+<w:pPr>
+<w:keepNext/>
+<w:spacing w:before="160"/>
+</w:pPr>
+<w:rPr>
+<w:b/>
+<w:sz w:val="22"/>
+</w:rPr>
+</w:style>
+<w:style w:type="paragraph" w:customStyle="1" w:styleId="ListParagraph">
+<w:name w:val="목록"/>
+<w:basedOn w:val="Body"/>
+<w:pPr>
+<w:spacing w:after="60"/>
+</w:pPr>
+</w:style>
+<w:style w:type="paragraph" w:customStyle="1" w:styleId="Callout">
+<w:name w:val="안내 상자"/>
+<w:basedOn w:val="Body"/>
+<w:pPr>
+<w:spacing w:after="60"/>
+</w:pPr>
+</w:style>
+<w:style w:type="paragraph" w:customStyle="1" w:styleId="Picture">
+<w:name w:val="그림"/>
+<w:basedOn w:val="Normal"/>
+<w:pPr>
+<w:keepNext/>
+<w:jc w:val="center"/>
+</w:pPr>
+</w:style>
+<w:style w:type="paragraph" w:customStyle="1" w:styleId="Spacer">
+<w:name w:val="간격"/>
+<w:basedOn w:val="Normal"/>
+<w:pPr>
+<w:spacing w:after="0" w:line="120" w:lineRule="exact"/>
+</w:pPr>
+<w:rPr>
+<w:sz w:val="4"/>
+</w:rPr>
+</w:style>
+<w:style w:type="paragraph" w:customStyle="1" w:styleId="HeaderFooter">
+<w:name w:val="머리글 바닥글"/>
+<w:basedOn w:val="Normal"/>
+<w:pPr>
+<w:jc w:val="center"/>
+<w:spacing w:after="0"/>
+</w:pPr>
+<w:rPr>
+<w:color w:val="5F6368"/>
+<w:sz w:val="18"/>
+</w:rPr>
+</w:style>
+<w:style w:type="character" w:styleId="Hyperlink">
+<w:name w:val="Hyperlink"/>
+<w:rPr>
+<w:color w:val="1A73E8"/>
+<w:u w:val="single"/>
+</w:rPr>
+</w:style>
+<w:style w:type="table" w:styleId="TableGrid">
+<w:name w:val="Table Grid"/>
+<w:tblPr>
+<w:tblBorders>
+<w:top w:val="single" w:sz="4" w:color="000000"/>
+<w:left w:val="single" w:sz="4" w:color="000000"/>
+<w:bottom w:val="single" w:sz="4" w:color="000000"/>
+<w:right w:val="single" w:sz="4" w:color="000000"/>
+<w:insideH w:val="single" w:sz="4" w:color="000000"/>
+<w:insideV w:val="single" w:sz="4" w:color="000000"/>
+</w:tblBorders>
+<w:tblCellMar>
+<w:left w:w="108" w:type="dxa"/>
+<w:right w:w="108" w:type="dxa"/>
+</w:tblCellMar>
+</w:tblPr>
+</w:style>
+</w:styles>

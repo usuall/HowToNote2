@@ -1,0 +1,2 @@
+internal/export/testdata/** -text
+*.tmpl text eol=lf

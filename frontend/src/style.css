@@ -1,0 +1,278 @@
+/* 앱 공통 스타일(UI 설계 4절): 색·글꼴·간격 변수와 단추·입력 칸·세그먼트·띠·툴팁의 기본 모양.
+   컴포넌트는 색 값을 직접 쓰지 않고 이 변수를 쓴다(예외: 그리기 색, 안내 상자 색). */
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 400;
+  src: url('/fonts/Pretendard-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 700;
+  src: url('/fonts/Pretendard-Bold.ttf') format('truetype');
+}
+
+:root {
+  --bg: #f7f7f7;
+  --surface: #ffffff;
+  --sunken: #fafafa;
+  --sidebar: #f8f9fa;
+  --hover: #eef0f2;
+  --border: #e9ecef;
+  --border-strong: #dddfe5;
+  --text: #1a1a1a;
+  --text-2: #555555;
+  --text-3: #888888;
+  --accent: #ffd43b;
+  --accent-border: #fab005;
+  --accent-soft: #fff9db;
+  --accent-hover: #fcc419;
+  --on-accent: #1a1a1a;
+  --notice: #8a6200;
+  --rec: #e5484d;
+  --danger: #c42b1c;
+  --danger-soft: #fdecec;
+  --danger-hover: #a32417;
+  --success: #2f9e44;
+  --success-soft: #e6f4ea;
+  --focus: #1a1a1a;
+  --tip-bg: #1f1f1f;
+  --canvas: #e9ebee;
+  --scrim: rgba(20, 20, 20, 0.38);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.18);
+  --radius-sm: 6px;
+  --radius: 8px;
+  --radius-lg: 12px;
+
+  font-family: 'Pretendard', 'Malgun Gothic', '맑은 고딕', sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--text);
+  background: var(--bg);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+/* 노란 초점 테두리는 흰 바탕에서 보이지 않아 검정을 쓴다 */
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* 전역 button은 보통 단추(.btn)와 같은 모양이다. 클래스를 빠뜨려도 모양이 깨지지 않는다. */
+button,
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 34px;
+  padding: 0 14px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--text);
+  white-space: nowrap;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+button:hover:not(:disabled),
+.btn:hover:not(:disabled) {
+  background: var(--hover);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.btn.primary {
+  font-weight: 700;
+  color: var(--on-accent);
+  background: var(--accent);
+  border-color: var(--accent-border);
+}
+
+.btn.primary:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.btn.ghost {
+  color: var(--text-2);
+  background: transparent;
+  border-color: transparent;
+}
+
+.btn.icon {
+  width: 34px;
+  padding: 0;
+  color: var(--text-2);
+  background: transparent;
+  border-color: transparent;
+}
+
+.btn.danger {
+  font-weight: 700;
+  color: var(--surface);
+  background: var(--danger);
+  border-color: var(--danger);
+}
+
+.btn.danger:hover:not(:disabled) {
+  background: var(--danger-hover);
+}
+
+.btn.sm {
+  height: 28px;
+  padding: 0 10px;
+  font-size: 13px;
+}
+
+.btn.icon.sm {
+  width: 28px;
+  padding: 0;
+}
+
+input:not([type]),
+input[type='text'],
+input[type='number'],
+select,
+textarea {
+  height: 34px;
+  padding: 0 10px;
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+}
+
+textarea {
+  height: auto;
+  padding: 8px 10px;
+}
+
+/* 세그먼트: 여러 개 중 하나 고르기(녹화 범위). 조각은 role="radio" 단추다.
+   고른 조각은 내보내기 형식 카드처럼 노란 테두리와 연노랑 바탕으로 한눈에 보이게 한다 */
+.seg {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  background: var(--sunken);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.seg button {
+  height: 30px;
+  padding: 0 12px;
+  font-size: 13px;
+  color: var(--text-2);
+  background: transparent;
+  border-color: transparent;
+  border-radius: var(--radius-sm);
+}
+
+.seg button[aria-checked='true'],
+.seg button[aria-checked='true']:hover:not(:disabled) {
+  font-weight: 700;
+  color: var(--text);
+  background: var(--accent-soft);
+  border-color: var(--accent-border);
+}
+
+/* 띠: 오류(빨강)와 안내(연노랑). 문구는 무엇을 하면 되는지 한 문장이다(스펙 1.2절 7) */
+.banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0;
+  padding: 10px 14px;
+  font-size: 13px;
+  border-radius: var(--radius);
+}
+
+.banner.error {
+  color: var(--danger);
+  background: var(--danger-soft);
+}
+
+.banner.notice {
+  color: var(--notice);
+  background: var(--accent-soft);
+}
+
+.error {
+  color: var(--danger);
+}
+
+.muted {
+  font-weight: 400;
+  color: var(--text-3);
+}
+
+kbd {
+  padding: 1px 5px;
+  font: inherit;
+  font-size: 12px;
+  color: var(--text-2);
+  border: 1px solid var(--border-strong);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+}
+
+/* 화면에는 보이지 않고 읽기 프로그램만 읽는 글 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* 툴팁(ui/tip.ts가 하나만 만들어 돌려 쓴다). 이름이 .tip이면 안내 상자 종류 'tip'(도움말)과 겹친다 */
+.tooltip {
+  position: fixed;
+  z-index: 1000;
+  max-width: 260px;
+  padding: 6px 10px;
+  font-size: 12px;
+  line-height: 1.4;
+  white-space: pre-line;
+  color: var(--surface);
+  background: var(--tip-bg);
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+}
+
+.tooltip[hidden] {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

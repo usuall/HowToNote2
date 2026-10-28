@@ -1,0 +1,6 @@
+Pretendard 1.3.9 (SIL Open Font License 1.1, OFL.txt). 고치지 않은 원본 정적 TTF 두 개만 넣는다.
+받은 곳: https://github.com/orioncactus/pretendard/releases/download/v1.3.9/Pretendard-1.3.9.zip
+  zip SHA256                      04be351a74d6bf7d60c480a3087e51d185485d35a52023142af1df19eb8c428a
+  public/static/alternative/Pretendard-Regular.ttf  6d0af5258997aec7354a6e340fc2325ba321c410ca48b3af858c8c3d6e92a324
+  public/static/alternative/Pretendard-Bold.ttf     c16b88c670d23e83fa1170c954cbc4822d3b8dad3c3cde15d798a94b43d97985
+  LICENSE.txt -> OFL.txt                            b04538c9abec39a3db75108cf0af0fd9c77032fe8aa2cf38345b4d250e98e38e

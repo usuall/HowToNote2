@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing">
+<w:body>
+<w:p>
+<w:pPr>
+<w:pStyle w:val="Heading1"/>
+<w:spacing w:before="4000"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+</w:rPr>
+<w:t xml:space="preserve">보고서 &lt;저장&gt; &amp; 제출</w:t>
+</w:r>
+</w:p>
+<w:p>
+<w:pPr>
+<w:pStyle w:val="Subtitle"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+</w:rPr>
+<w:t xml:space="preserve">2026. 10. 21.</w:t>
+</w:r>
+</w:p>
+<w:p>
+<w:pPr>
+<w:pStyle w:val="Spacer"/>
+</w:pPr>
+<w:r>
+<w:br w:type="page"/>
+</w:r>
+</w:p>
+<w:p>
+<w:pPr>
+<w:pStyle w:val="TOCHeading"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+</w:rPr>
+<w:t xml:space="preserve">목차</w:t>
+</w:r>
+</w:p>
+<w:p>
+<w:r>
+<w:fldChar w:fldCharType="begin" w:dirty="true"/>
+</w:r>
+<w:r>
+<w:instrText xml:space="preserve"> TOC \o "2-3" \h \z \u </w:instrText>
+</w:r>
+<w:r>
+<w:fldChar w:fldCharType="separate"/>
+</w:r>
+<w:r>
+<w:t>목차를 보려면 Word에서 목차를 업데이트하세요.</w:t>
+</w:r>
+<w:r>
+<w:fldChar w:fldCharType="end"/>
+</w:r>
+</w:p>
+<w:p>
+<w:pPr>
+<w:pStyle w:val="Spacer"/>
+</w:pPr>
+<w:r>
+<w:br w:type="page"/>
+</w:r>
+</w:p>
+<w:p>
+<w:pPr>
+<w:pStyle w:val="StepTitle"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+</w:rPr>
+<w:t xml:space="preserve">1. &#39;파일&#39; 메뉴를 선택합니다.</w:t>
+</w:r>
+</w:p>
+<w:p>
+<w:pPr>
+<w:pStyle w:val="Picture"/>
+</w:pPr>
+<w:r>
+<w:drawing>
+<wp:inline distT="0" distB="0" distL="0" distR="0">
+<wp:extent cx="6120130" cy="3442573"/>
+<wp:docPr id="1" name="그림 1"/>
+<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+<a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:nvPicPr>
+<pic:cNvPr id="1" name="image1.png"/>
+<pic:cNvPicPr/>
+</pic:nvPicPr>
+<pic:blipFill>
+<a:blip r:embed="rId100"/>
+<a:stretch>
+<a:fillRect/>
+</a:stretch>
+</pic:blipFill>
+<pic:spPr>
+<a:xfrm>
+<a:off x="0" y="0"/>
+<a:ext cx="6120130" cy="3442573"/>
+</a:xfrm>
+<a:prstGeom prst="rect">
+<a:avLst/>
+</a:prstGeom>
+</pic:spPr>
+</pic:pic>
+</a:graphicData>
+</a:graphic>
+</wp:inline>
+</w:drawing>
+</w:r>
+</w:p>
+<w:p>
+<w:pPr>
+<w:pStyle w:val="Body"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+</w:rPr>
+<w:t xml:space="preserve">보통 </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+</w:rPr>
+<w:t xml:space="preserve">굵게</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+</w:rPr>
+<w:t xml:space="preserve">
+</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:i/>
+</w:rPr>
+<w:t xml:space="preserve">기울임</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+</w:rPr>
+<w:t xml:space="preserve">
+</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:u w:val="single"/>
+</w:rPr>
+<w:t xml:space="preserve">밑줄</w:t>
+</w:r>
+<w:r>
+<w:br/>
+</w:r>
+<w:hyperlink r:id="rId101">
+<w:r>
+<w:rPr>
+<w:rStyle w:val="Hyperlink"/>
+</w:rPr>
+<w:t xml:space="preserve">링크 &lt;A&amp;B&gt;</w:t>
+</w:r>
+</w:hyperlink>
+</w:p>
+<w:p>
+<w:pPr>
+<w:pStyle w:val="DescHeading3"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+</w:rPr>
+<w:t xml:space="preserve">소제목 셋</w:t>
+</w:r>
+</w:p>
+<w:p>
+<w:pPr>
+<w:pStyle w:val="ListParagraph"/>
+<w:numPr>
+<w:ilvl w:val="0"/>
+<w:numId w:val="1"/>
+</w:numPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+</w:rPr>
+<w:t xml:space="preserve">글머리 하나</w:t>
+</w:r>
+</w:p>
+<w:p>
+<w:pPr>
+<w:pStyle w:val="ListParagraph"/>
+<w:numPr>
+<w:ilvl w:val="1"/>
+<w:numId w:val="2"/>
+</w:numPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+</w:rPr>
+<w:t xml:space="preserve">안쪽 번호 셋</w:t>
+</w:r>
+</w:p>
+<w:p>
+<w:pPr>
+<w:pStyle w:val="ListParagraph"/>
+<w:numPr>
+<w:ilvl w:val="0"/>
+<w:numId w:val="1"/>
+</w:numPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+</w:rPr>
+<w:t xml:space="preserve">글머리 둘</w:t>
+</w:r>
+</w:p>
+<w:p>
+<w:pPr>
+<w:pStyle w:val="DescHeading4"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+</w:rPr>
+<w:t xml:space="preserve">소제목 넷</w:t>
+</w:r>
+</w:p>
+<w:tbl>
+<w:tblPr>
+<w:tblStyle w:val="TableGrid"/>
+<w:tblW w:w="5000" w:type="pct"/>
+</w:tblPr>
+<w:tblGrid>
+<w:gridCol w:w="4819"/>
+<w:gridCol w:w="4819"/>
+</w:tblGrid>
+<w:tr>
+<w:tc>
+<w:tcPr>
+<w:tcW w:w="4819" w:type="dxa"/>
+<w:shd w:val="clear" w:color="auto" w:fill="F1F3F4"/>
+</w:tcPr>
+<w:p>
+<w:pPr>
+<w:pStyle w:val="Body"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:b/>
+</w:rPr>
+<w:t xml:space="preserve">항목</w:t>
+</w:r>
+</w:p>
+</w:tc>
+<w:tc>
+<w:tcPr>
+<w:tcW w:w="4819" w:type="dxa"/>
+<w:shd w:val="clear" w:color="auto" w:fill="F1F3F4"/>
+</w:tcPr>
+<w:p>
+<w:pPr>
+<w:pStyle w:val="Body"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:b/>
+</w:rPr>
+<w:t xml:space="preserve">값</w:t>
+</w:r>
+</w:p>
+</w:tc>
+</w:tr>
+<w:tr>
+<w:tc>
+<w:tcPr>
+<w:tcW w:w="4819" w:type="dxa"/>
+</w:tcPr>
+<w:p>
+<w:pPr>
+<w:pStyle w:val="Body"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+</w:rPr>
+<w:t xml:space="preserve">이름</w:t>
+</w:r>
+</w:p>
+</w:tc>
+<w:tc>
+<w:tcPr>
+<w:tcW w:w="4819" w:type="dxa"/>
+</w:tcPr>
+<w:p>
+<w:pPr>
+<w:pStyle w:val="Body"/>
+</w:pPr>
+</w:p>
+</w:tc>
+</w:tr>
+</w:tbl>
+<w:p>
+<w:pPr>
+<w:pStyle w:val="Spacer"/>
+</w:pPr>
+</w:p>
+<w:p>
+<w:pPr>
+<w:pStyle w:val="Body"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+</w:rPr>
+<w:t xml:space="preserve">로컬 링크는 글자만</w:t>
+</w:r>
+</w:p>
+<w:tbl>
+<w:tblPr>
+<w:tblW w:w="5000" w:type="pct"/>
+<w:tblBorders>
+<w:top w:val="single" w:sz="4" w:color="F9AB00"/>
+<w:left w:val="single" w:sz="24" w:color="F9AB00"/>
+<w:bottom w:val="single" w:sz="4" w:color="F9AB00"/>
+<w:right w:val="single" w:sz="4" w:color="F9AB00"/>
+</w:tblBorders>
+<w:tblCellMar>
+<w:top w:w="80" w:type="dxa"/>
+<w:left w:w="160" w:type="dxa"/>
+<w:bottom w:w="80" w:type="dxa"/>
+<w:right w:w="160" w:type="dxa"/>
+</w:tblCellMar>
+</w:tblPr>
+<w:tblGrid>
+<w:gridCol w:w="9638"/>
+</w:tblGrid>
+<w:tr>
+<w:tc>
+<w:tcPr>
+<w:tcW w:w="9638" w:type="dxa"/>
+<w:shd w:val="clear" w:color="auto" w:fill="FEF7E0"/>
+</w:tcPr>
+<w:p>
+<w:pPr>
+<w:pStyle w:val="Callout"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:b/>
+</w:rPr>
+<w:t xml:space="preserve">주의</w:t>
+</w:r>
+</w:p>
+<w:p>
+<w:pPr>
+<w:pStyle w:val="Callout"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+</w:rPr>
+<w:t xml:space="preserve">저장 전에 확인하세요.</w:t>
+</w:r>
+</w:p>
+</w:tc>
+</w:tr>
+</w:tbl>
+<w:p>
+<w:pPr>
+<w:pStyle w:val="Spacer"/>
+</w:pPr>
+</w:p>
+<w:p>
+<w:pPr>
+<w:pStyle w:val="SubStepTitle"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+</w:rPr>
+<w:t xml:space="preserve">1.1 &#39;저장&#39; 버튼을 클릭합니다.</w:t>
+</w:r>
+</w:p>
+<w:p>
+<w:pPr>
+<w:pStyle w:val="Picture"/>
+</w:pPr>
+<w:r>
+<w:drawing>
+<wp:inline distT="0" distB="0" distL="0" distR="0">
+<wp:extent cx="3048000" cy="1905000"/>
+<wp:docPr id="2" name="그림 2"/>
+<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+<a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:nvPicPr>
+<pic:cNvPr id="2" name="image2.png"/>
+<pic:cNvPicPr/>
+</pic:nvPicPr>
+<pic:blipFill>
+<a:blip r:embed="rId102"/>
+<a:stretch>
+<a:fillRect/>
+</a:stretch>
+</pic:blipFill>
+<pic:spPr>
+<a:xfrm>
+<a:off x="0" y="0"/>
+<a:ext cx="3048000" cy="1905000"/>
+</a:xfrm>
+<a:prstGeom prst="rect">
+<a:avLst/>
+</a:prstGeom>
+</pic:spPr>
+</pic:pic>
+</a:graphicData>
+</a:graphic>
+</wp:inline>
+</w:drawing>
+</w:r>
+</w:p>
+<w:tbl>
+<w:tblPr>
+<w:tblW w:w="5000" w:type="pct"/>
+<w:tblBorders>
+<w:top w:val="single" w:sz="4" w:color="188038"/>
+<w:left w:val="single" w:sz="24" w:color="188038"/>
+<w:bottom w:val="single" w:sz="4" w:color="188038"/>
+<w:right w:val="single" w:sz="4" w:color="188038"/>
+</w:tblBorders>
+<w:tblCellMar>
+<w:top w:w="80" w:type="dxa"/>
+<w:left w:w="160" w:type="dxa"/>
+<w:bottom w:w="80" w:type="dxa"/>
+<w:right w:w="160" w:type="dxa"/>
+</w:tblCellMar>
+</w:tblPr>
+<w:tblGrid>
+<w:gridCol w:w="9638"/>
+</w:tblGrid>
+<w:tr>
+<w:tc>
+<w:tcPr>
+<w:tcW w:w="9638" w:type="dxa"/>
+<w:shd w:val="clear" w:color="auto" w:fill="E6F4EA"/>
+</w:tcPr>
+<w:p>
+<w:pPr>
+<w:pStyle w:val="Callout"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:b/>
+</w:rPr>
+<w:t xml:space="preserve">도움말 &lt;제목&gt;</w:t>
+</w:r>
+</w:p>
+</w:tc>
+</w:tr>
+</w:tbl>
+<w:p>
+<w:pPr>
+<w:pStyle w:val="Spacer"/>
+</w:pPr>
+</w:p>
+<w:p>
+<w:pPr>
+<w:pStyle w:val="StepTitle"/>
+<w:pageBreakBefore/>
+</w:pPr>
+<w:r>
+<w:rPr>
+</w:rPr>
+<w:t xml:space="preserve">2.</w:t>
+</w:r>
+</w:p>
+<w:sectPr>
+<w:headerReference w:type="default" r:id="rIdHeader"/>
+<w:footerReference w:type="default" r:id="rIdFooter"/>
+<w:pgSz w:w="11906" w:h="16838"/>
+<w:pgMar w:top="1440" w:right="1134" w:bottom="1440" w:left="1134" w:header="708" w:footer="708" w:gutter="0"/>
+</w:sectPr>
+</w:body>
+</w:document>

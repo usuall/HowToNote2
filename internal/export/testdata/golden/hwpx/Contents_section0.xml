@@ -1,0 +1,405 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<hs:sec xmlns:ha="http://www.hancom.co.kr/hwpml/2011/app" xmlns:hp="http://www.hancom.co.kr/hwpml/2011/paragraph" xmlns:hp10="http://www.hancom.co.kr/hwpml/2016/paragraph" xmlns:hs="http://www.hancom.co.kr/hwpml/2011/section" xmlns:hc="http://www.hancom.co.kr/hwpml/2011/core" xmlns:hh="http://www.hancom.co.kr/hwpml/2011/head" xmlns:hhs="http://www.hancom.co.kr/hwpml/2011/history" xmlns:hm="http://www.hancom.co.kr/hwpml/2011/master-page" xmlns:hpf="http://www.hancom.co.kr/schema/2011/hpf" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf/" xmlns:ooxmlchart="http://www.hancom.co.kr/hwpml/2016/ooxmlchart" xmlns:hwpunitchar="http://www.hancom.co.kr/hwpml/2016/HwpUnitChar" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:config="urn:oasis:names:tc:opendocument:xmlns:config:1.0">
+<hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="0">
+<hp:secPr id="" textDirection="HORIZONTAL" spaceColumns="1134" tabStop="8000" tabStopVal="4000" tabStopUnit="HWPUNIT" outlineShapeIDRef="1" memoShapeIDRef="0" textVerticalWidthHead="0" masterPageCnt="0">
+<hp:grid lineGrid="0" charGrid="0" wonggojiFormat="0"/>
+<hp:startNum pageStartsOn="BOTH" page="0" pic="0" tbl="0" equation="0"/>
+<hp:visibility hideFirstHeader="0" hideFirstFooter="0" hideFirstMasterPage="0" border="SHOW_ALL" fill="SHOW_ALL" hideFirstPageNum="0" hideFirstEmptyLine="0" showLineNumber="0"/>
+<hp:lineNumberShape restartType="0" countBy="0" distance="0" startNumber="0"/>
+<hp:pagePr landscape="WIDELY" width="59528" height="84186" gutterType="LEFT_ONLY">
+<hp:margin header="4252" footer="4252" gutter="0" left="8504" right="8504" top="5668" bottom="4252"/>
+</hp:pagePr>
+<hp:footNotePr>
+<hp:autoNumFormat type="DIGIT" userChar="" prefixChar="" suffixChar=")" supscript="0"/>
+<hp:noteLine length="-1" type="SOLID" width="0.12 mm" color="#000000"/>
+<hp:noteSpacing betweenNotes="283" belowLine="567" aboveLine="850"/>
+<hp:numbering type="CONTINUOUS" newNum="1"/>
+<hp:placement place="EACH_COLUMN" beneathText="0"/>
+</hp:footNotePr>
+<hp:endNotePr>
+<hp:autoNumFormat type="DIGIT" userChar="" prefixChar="" suffixChar=")" supscript="0"/>
+<hp:noteLine length="14692344" type="SOLID" width="0.12 mm" color="#000000"/>
+<hp:noteSpacing betweenNotes="0" belowLine="567" aboveLine="850"/>
+<hp:numbering type="CONTINUOUS" newNum="1"/>
+<hp:placement place="END_OF_DOCUMENT" beneathText="0"/>
+</hp:endNotePr>
+<hp:pageBorderFill type="BOTH" borderFillIDRef="1" textBorder="PAPER" headerInside="0" footerInside="0" fillArea="PAPER">
+<hp:offset left="1417" right="1417" top="1417" bottom="1417"/>
+</hp:pageBorderFill>
+<hp:pageBorderFill type="EVEN" borderFillIDRef="1" textBorder="PAPER" headerInside="0" footerInside="0" fillArea="PAPER">
+<hp:offset left="1417" right="1417" top="1417" bottom="1417"/>
+</hp:pageBorderFill>
+<hp:pageBorderFill type="ODD" borderFillIDRef="1" textBorder="PAPER" headerInside="0" footerInside="0" fillArea="PAPER">
+<hp:offset left="1417" right="1417" top="1417" bottom="1417"/>
+</hp:pageBorderFill>
+</hp:secPr>
+<hp:ctrl>
+<hp:colPr id="" type="NEWSPAPER" layout="LEFT" colCount="1" sameSz="1" sameGap="0"/>
+</hp:ctrl>
+<hp:ctrl>
+<hp:header id="1001" applyPageType="BOTH">
+<hp:subList id="" textDirection="HORIZONTAL" lineWrap="BREAK" vertAlign="TOP" linkListIDRef="0" linkListNextIDRef="0" textWidth="42520" textHeight="4252" hasTextRef="0" hasNumRef="0">
+<hp:p id="1002" paraPrIDRef="20" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="21">
+<hp:t>보고서 &lt;저장&gt; &amp; 제출</hp:t>
+</hp:run>
+</hp:p>
+</hp:subList>
+</hp:header>
+</hp:ctrl>
+<hp:ctrl>
+<hp:footer id="1003" applyPageType="BOTH">
+<hp:subList id="" textDirection="HORIZONTAL" lineWrap="BREAK" vertAlign="BOTTOM" linkListIDRef="0" linkListNextIDRef="0" textWidth="42520" textHeight="4252" hasTextRef="0" hasNumRef="0">
+<hp:p id="1004" paraPrIDRef="20" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="21">
+<hp:ctrl>
+<hp:autoNum num="1" numType="PAGE">
+<hp:autoNumFormat type="DIGIT" userChar="" prefixChar="" suffixChar="" supscript="0"/>
+</hp:autoNum>
+</hp:ctrl>
+</hp:run>
+<hp:run charPrIDRef="21">
+<hp:t> / </hp:t>
+</hp:run>
+<hp:run charPrIDRef="21">
+<hp:ctrl>
+<hp:autoNum num="1" numType="TOTAL_PAGE">
+<hp:autoNumFormat type="DIGIT" userChar="" prefixChar="" suffixChar="" supscript="0"/>
+</hp:autoNum>
+</hp:ctrl>
+</hp:run>
+</hp:p>
+</hp:subList>
+</hp:footer>
+</hp:ctrl>
+</hp:run>
+<hp:run charPrIDRef="0">
+<hp:t/>
+</hp:run>
+<hp:linesegarray>
+<hp:lineseg textpos="0" vertpos="0" vertsize="1000" textheight="1000" baseline="850" spacing="600" horzpos="0" horzsize="42520" flags="393216"/>
+</hp:linesegarray>
+</hp:p>
+<hp:p id="1005" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="7">
+<hp:t/>
+</hp:run>
+</hp:p>
+<hp:p id="1006" paraPrIDRef="20" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="16">
+<hp:t>보고서 &lt;저장&gt; &amp; 제출</hp:t>
+</hp:run>
+</hp:p>
+<hp:p id="1007" paraPrIDRef="20" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="7">
+<hp:t>2026. 10. 21.</hp:t>
+</hp:run>
+</hp:p>
+<hp:p id="1008" paraPrIDRef="0" styleIDRef="0" pageBreak="1" columnBreak="0" merged="0">
+<hp:run charPrIDRef="19">
+<hp:t>목차</hp:t>
+</hp:run>
+</hp:p>
+<hp:p id="1009" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="7">
+<hp:t>1. &#39;파일&#39; 메뉴를 선택합니다.</hp:t>
+</hp:run>
+</hp:p>
+<hp:p id="1010" paraPrIDRef="21" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="7">
+<hp:t>1.1 &#39;저장&#39; 버튼을 클릭합니다.</hp:t>
+</hp:run>
+</hp:p>
+<hp:p id="1011" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="7">
+<hp:t>2.</hp:t>
+</hp:run>
+</hp:p>
+<hp:p id="1012" paraPrIDRef="24" styleIDRef="0" pageBreak="1" columnBreak="0" merged="0">
+<hp:run charPrIDRef="17">
+<hp:t>1. &#39;파일&#39; 메뉴를 선택합니다.</hp:t>
+</hp:run>
+</hp:p>
+<hp:p id="1014" paraPrIDRef="20" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="7">
+<hp:pic textWrap="SQUARE" textFlow="BOTH_SIDES" reverse="0" id="1013" zOrder="0" numberingType="PICTURE" lock="0" dropcapstyle="None" href="" groupLevel="0" instid="1013">
+<hp:offset x="0" y="0"/>
+<hp:orgSz width="42520" height="23917"/>
+<hp:curSz width="42520" height="23917"/>
+<hp:flip horizontal="0" vertical="0"/>
+<hp:rotationInfo angle="0" centerX="21260" centerY="11958" rotateimage="1"/>
+<hp:renderingInfo>
+<hc:transMatrix e1="1" e2="0" e3="0" e4="0" e5="1" e6="0"/>
+<hc:scaMatrix e1="1" e2="0" e3="0" e4="0" e5="1" e6="0"/>
+<hc:rotMatrix e1="1" e2="0" e3="0" e4="0" e5="1" e6="0"/>
+</hp:renderingInfo>
+<hp:imgRect>
+<hc:pt0 x="0" y="0"/>
+<hc:pt1 x="42520" y="0"/>
+<hc:pt2 x="42520" y="23917"/>
+<hc:pt3 x="0" y="23917"/>
+</hp:imgRect>
+<hp:imgClip left="0" right="42520" top="0" bottom="23917"/>
+<hp:inMargin left="0" right="0" top="0" bottom="0"/>
+<hp:imgDim dimwidth="42520" dimheight="23917"/>
+<hc:img binaryItemIDRef="image1" bright="0" contrast="0" effect="REAL_PIC" alpha="0"/>
+<hp:effects/>
+<hp:sz width="42520" height="23917" widthRelTo="ABSOLUTE" heightRelTo="ABSOLUTE" protect="0"/>
+<hp:pos treatAsChar="1" affectLSpacing="0" flowWithText="1" allowOverlap="0" holdAnchorAndSO="0" vertRelTo="PARA" horzRelTo="COLUMN" vertAlign="TOP" horzAlign="LEFT" vertOffset="0" horzOffset="0"/>
+<hp:outMargin left="0" right="0" top="0" bottom="0"/>
+<hp:shapeComment/>
+</hp:pic>
+</hp:run>
+</hp:p>
+<hp:p id="1015" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="7">
+<hp:t>보통 </hp:t>
+</hp:run>
+<hp:run charPrIDRef="8">
+<hp:t>굵게</hp:t>
+</hp:run>
+<hp:run charPrIDRef="7">
+<hp:t>
+</hp:t>
+</hp:run>
+<hp:run charPrIDRef="9">
+<hp:t>기울임</hp:t>
+</hp:run>
+<hp:run charPrIDRef="7">
+<hp:t>
+</hp:t>
+</hp:run>
+<hp:run charPrIDRef="11">
+<hp:t>밑줄</hp:t>
+</hp:run>
+<hp:run charPrIDRef="7">
+<hp:t>
+<hp:lineBreak/>
+</hp:t>
+</hp:run>
+<hp:run charPrIDRef="7">
+<hp:ctrl>
+<hp:fieldBegin id="1016" type="HYPERLINK" name="https://example.com/a?b=1&amp;c=2" editable="0" dirty="0" zorder="-1" fieldid="627600491">
+<hp:parameters cnt="6" name="">
+<hp:integerParam name="Prop">0</hp:integerParam>
+<hp:stringParam name="Command">https\://example.com/a\?b=1&amp;c=2;1;0;0;</hp:stringParam>
+<hp:stringParam name="Path">https://example.com/a?b=1&amp;c=2</hp:stringParam>
+<hp:stringParam name="Category">HWPHYPERLINK_TYPE_URL</hp:stringParam>
+<hp:stringParam name="TargetType">HWPHYPERLINK_TARGET_BOOKMARK</hp:stringParam>
+<hp:stringParam name="DocOpenType">HWPHYPERLINK_JUMP_CURRENTTAB</hp:stringParam>
+</hp:parameters>
+</hp:fieldBegin>
+</hp:ctrl>
+</hp:run>
+<hp:run charPrIDRef="15">
+<hp:t>링크 &lt;A&amp;B&gt;</hp:t>
+</hp:run>
+<hp:run charPrIDRef="7">
+<hp:ctrl>
+<hp:fieldEnd beginIDRef="1016" fieldid="627600491"/>
+</hp:ctrl>
+</hp:run>
+</hp:p>
+<hp:p id="1017" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="19">
+<hp:t>소제목 셋</hp:t>
+</hp:run>
+</hp:p>
+<hp:p id="1018" paraPrIDRef="21" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="7">
+<hp:t>• </hp:t>
+</hp:run>
+<hp:run charPrIDRef="7">
+<hp:t>글머리 하나</hp:t>
+</hp:run>
+</hp:p>
+<hp:p id="1019" paraPrIDRef="22" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="7">
+<hp:t>3. </hp:t>
+</hp:run>
+<hp:run charPrIDRef="7">
+<hp:t>안쪽 번호 셋</hp:t>
+</hp:run>
+</hp:p>
+<hp:p id="1020" paraPrIDRef="21" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="7">
+<hp:t>• </hp:t>
+</hp:run>
+<hp:run charPrIDRef="7">
+<hp:t>글머리 둘</hp:t>
+</hp:run>
+</hp:p>
+<hp:p id="1021" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="20">
+<hp:t>소제목 넷</hp:t>
+</hp:run>
+</hp:p>
+<hp:p id="1022" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="7">
+<hp:tbl id="1023" zOrder="0" numberingType="TABLE" textWrap="TOP_AND_BOTTOM" textFlow="BOTH_SIDES" lock="0" dropcapstyle="None" pageBreak="CELL" repeatHeader="0" rowCnt="2" colCnt="2" cellSpacing="0" borderFillIDRef="3" noAdjust="0">
+<hp:sz width="42520" widthRelTo="ABSOLUTE" height="564" heightRelTo="ABSOLUTE" protect="0"/>
+<hp:pos treatAsChar="1" affectLSpacing="0" flowWithText="1" allowOverlap="0" holdAnchorAndSO="0" vertRelTo="PARA" horzRelTo="COLUMN" vertAlign="TOP" horzAlign="LEFT" vertOffset="0" horzOffset="0"/>
+<hp:outMargin left="0" right="0" top="0" bottom="0"/>
+<hp:inMargin left="510" right="510" top="141" bottom="141"/>
+<hp:tr>
+<hp:tc name="" header="1" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+<hp:subList id="" textDirection="HORIZONTAL" lineWrap="BREAK" vertAlign="CENTER" linkListIDRef="0" linkListNextIDRef="0" textWidth="0" textHeight="0" hasTextRef="0" hasNumRef="0">
+<hp:p id="1024" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="7">
+<hp:t>항목</hp:t>
+</hp:run>
+</hp:p>
+</hp:subList>
+<hp:cellAddr colAddr="0" rowAddr="0"/>
+<hp:cellSpan colSpan="1" rowSpan="1"/>
+<hp:cellSz width="21260" height="282"/>
+<hp:cellMargin left="510" right="510" top="141" bottom="141"/>
+</hp:tc>
+<hp:tc name="" header="1" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+<hp:subList id="" textDirection="HORIZONTAL" lineWrap="BREAK" vertAlign="CENTER" linkListIDRef="0" linkListNextIDRef="0" textWidth="0" textHeight="0" hasTextRef="0" hasNumRef="0">
+<hp:p id="1025" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="7">
+<hp:t>값</hp:t>
+</hp:run>
+</hp:p>
+</hp:subList>
+<hp:cellAddr colAddr="1" rowAddr="0"/>
+<hp:cellSpan colSpan="1" rowSpan="1"/>
+<hp:cellSz width="21260" height="282"/>
+<hp:cellMargin left="510" right="510" top="141" bottom="141"/>
+</hp:tc>
+</hp:tr>
+<hp:tr>
+<hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="3">
+<hp:subList id="" textDirection="HORIZONTAL" lineWrap="BREAK" vertAlign="CENTER" linkListIDRef="0" linkListNextIDRef="0" textWidth="0" textHeight="0" hasTextRef="0" hasNumRef="0">
+<hp:p id="1026" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="7">
+<hp:t>이름</hp:t>
+</hp:run>
+</hp:p>
+</hp:subList>
+<hp:cellAddr colAddr="0" rowAddr="1"/>
+<hp:cellSpan colSpan="1" rowSpan="1"/>
+<hp:cellSz width="21260" height="282"/>
+<hp:cellMargin left="510" right="510" top="141" bottom="141"/>
+</hp:tc>
+<hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="3">
+<hp:subList id="" textDirection="HORIZONTAL" lineWrap="BREAK" vertAlign="CENTER" linkListIDRef="0" linkListNextIDRef="0" textWidth="0" textHeight="0" hasTextRef="0" hasNumRef="0">
+<hp:p id="1027" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="7">
+<hp:t/>
+</hp:run>
+</hp:p>
+</hp:subList>
+<hp:cellAddr colAddr="1" rowAddr="1"/>
+<hp:cellSpan colSpan="1" rowSpan="1"/>
+<hp:cellSz width="21260" height="282"/>
+<hp:cellMargin left="510" right="510" top="141" bottom="141"/>
+</hp:tc>
+</hp:tr>
+</hp:tbl>
+</hp:run>
+</hp:p>
+<hp:p id="1028" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="7">
+<hp:t>로컬 링크는 글자만</hp:t>
+</hp:run>
+</hp:p>
+<hp:p id="1029" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="7">
+<hp:tbl id="1030" zOrder="0" numberingType="TABLE" textWrap="TOP_AND_BOTTOM" textFlow="BOTH_SIDES" lock="0" dropcapstyle="None" pageBreak="CELL" repeatHeader="0" rowCnt="1" colCnt="1" cellSpacing="0" borderFillIDRef="3" noAdjust="0">
+<hp:sz width="42520" widthRelTo="ABSOLUTE" height="282" heightRelTo="ABSOLUTE" protect="0"/>
+<hp:pos treatAsChar="1" affectLSpacing="0" flowWithText="1" allowOverlap="0" holdAnchorAndSO="0" vertRelTo="PARA" horzRelTo="COLUMN" vertAlign="TOP" horzAlign="LEFT" vertOffset="0" horzOffset="0"/>
+<hp:outMargin left="0" right="0" top="0" bottom="0"/>
+<hp:inMargin left="510" right="510" top="141" bottom="141"/>
+<hp:tr>
+<hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="7">
+<hp:subList id="" textDirection="HORIZONTAL" lineWrap="BREAK" vertAlign="CENTER" linkListIDRef="0" linkListNextIDRef="0" textWidth="0" textHeight="0" hasTextRef="0" hasNumRef="0">
+<hp:p id="1031" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="8">
+<hp:t>주의</hp:t>
+</hp:run>
+</hp:p>
+<hp:p id="1032" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="7">
+<hp:t>저장 전에 확인하세요.</hp:t>
+</hp:run>
+</hp:p>
+</hp:subList>
+<hp:cellAddr colAddr="0" rowAddr="0"/>
+<hp:cellSpan colSpan="1" rowSpan="1"/>
+<hp:cellSz width="42520" height="282"/>
+<hp:cellMargin left="510" right="510" top="141" bottom="141"/>
+</hp:tc>
+</hp:tr>
+</hp:tbl>
+</hp:run>
+</hp:p>
+<hp:p id="1033" paraPrIDRef="24" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="18">
+<hp:t>1.1 &#39;저장&#39; 버튼을 클릭합니다.</hp:t>
+</hp:run>
+</hp:p>
+<hp:p id="1035" paraPrIDRef="20" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="7">
+<hp:pic textWrap="SQUARE" textFlow="BOTH_SIDES" reverse="0" id="1034" zOrder="0" numberingType="PICTURE" lock="0" dropcapstyle="None" href="" groupLevel="0" instid="1034">
+<hp:offset x="0" y="0"/>
+<hp:orgSz width="24000" height="15000"/>
+<hp:curSz width="24000" height="15000"/>
+<hp:flip horizontal="0" vertical="0"/>
+<hp:rotationInfo angle="0" centerX="12000" centerY="7500" rotateimage="1"/>
+<hp:renderingInfo>
+<hc:transMatrix e1="1" e2="0" e3="0" e4="0" e5="1" e6="0"/>
+<hc:scaMatrix e1="1" e2="0" e3="0" e4="0" e5="1" e6="0"/>
+<hc:rotMatrix e1="1" e2="0" e3="0" e4="0" e5="1" e6="0"/>
+</hp:renderingInfo>
+<hp:imgRect>
+<hc:pt0 x="0" y="0"/>
+<hc:pt1 x="24000" y="0"/>
+<hc:pt2 x="24000" y="15000"/>
+<hc:pt3 x="0" y="15000"/>
+</hp:imgRect>
+<hp:imgClip left="0" right="24000" top="0" bottom="15000"/>
+<hp:inMargin left="0" right="0" top="0" bottom="0"/>
+<hp:imgDim dimwidth="24000" dimheight="15000"/>
+<hc:img binaryItemIDRef="image2" bright="0" contrast="0" effect="REAL_PIC" alpha="0"/>
+<hp:effects/>
+<hp:sz width="24000" height="15000" widthRelTo="ABSOLUTE" heightRelTo="ABSOLUTE" protect="0"/>
+<hp:pos treatAsChar="1" affectLSpacing="0" flowWithText="1" allowOverlap="0" holdAnchorAndSO="0" vertRelTo="PARA" horzRelTo="COLUMN" vertAlign="TOP" horzAlign="LEFT" vertOffset="0" horzOffset="0"/>
+<hp:outMargin left="0" right="0" top="0" bottom="0"/>
+<hp:shapeComment/>
+</hp:pic>
+</hp:run>
+</hp:p>
+<hp:p id="1036" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="7">
+<hp:tbl id="1037" zOrder="0" numberingType="TABLE" textWrap="TOP_AND_BOTTOM" textFlow="BOTH_SIDES" lock="0" dropcapstyle="None" pageBreak="CELL" repeatHeader="0" rowCnt="1" colCnt="1" cellSpacing="0" borderFillIDRef="3" noAdjust="0">
+<hp:sz width="42520" widthRelTo="ABSOLUTE" height="282" heightRelTo="ABSOLUTE" protect="0"/>
+<hp:pos treatAsChar="1" affectLSpacing="0" flowWithText="1" allowOverlap="0" holdAnchorAndSO="0" vertRelTo="PARA" horzRelTo="COLUMN" vertAlign="TOP" horzAlign="LEFT" vertOffset="0" horzOffset="0"/>
+<hp:outMargin left="0" right="0" top="0" bottom="0"/>
+<hp:inMargin left="510" right="510" top="141" bottom="141"/>
+<hp:tr>
+<hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="6">
+<hp:subList id="" textDirection="HORIZONTAL" lineWrap="BREAK" vertAlign="CENTER" linkListIDRef="0" linkListNextIDRef="0" textWidth="0" textHeight="0" hasTextRef="0" hasNumRef="0">
+<hp:p id="1038" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+<hp:run charPrIDRef="8">
+<hp:t>도움말 &lt;제목&gt;</hp:t>
+</hp:run>
+</hp:p>
+</hp:subList>
+<hp:cellAddr colAddr="0" rowAddr="0"/>
+<hp:cellSpan colSpan="1" rowSpan="1"/>
+<hp:cellSz width="42520" height="282"/>
+<hp:cellMargin left="510" right="510" top="141" bottom="141"/>
+</hp:tc>
+</hp:tr>
+</hp:tbl>
+</hp:run>
+</hp:p>
+<hp:p id="1039" paraPrIDRef="24" styleIDRef="0" pageBreak="1" columnBreak="0" merged="0">
+<hp:run charPrIDRef="17">
+<hp:t>2.</hp:t>
+</hp:run>
+</hp:p>
+</hs:sec>

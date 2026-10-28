@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:hdr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+<w:p>
+<w:pPr>
+<w:pStyle w:val="HeaderFooter"/>
+</w:pPr>
+<w:r>
+<w:t xml:space="preserve">보고서 &lt;저장&gt; &amp; 제출</w:t>
+</w:r>
+</w:p>
+</w:hdr>
